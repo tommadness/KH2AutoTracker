@@ -32,15 +32,15 @@ namespace KH2TrackAuto
                 process = Process.GetProcessesByName("pcsx2")[0];
                 IntPtr processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
                 int bytesRead = 0;
-                byte[] buffer = new byte[bytesToRead]; //'Hello World!' takes 12*2 bytes because of Unicode 
+                byte[] buffer = new byte[bytesToRead]; 
 
-                // 0x0046A3B8 is the address where I found the string, replace it with what you found
                 ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
+                Array.Reverse(buffer, 0, buffer.Length);
                 return buffer;
             }
             catch (IndexOutOfRangeException e)
             {
-                return new byte[0];
+                return new byte[4] { 0xFF, 0xFF, 0xFF, 0xFF };
             }
         }
     }
