@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KH2TrackAuto", "KH2TrackAuto\KH2TrackAuto.csproj", "{456EFAE1-813B-4D10-A779-E63C8CE52459}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{456EFAE1-813B-4D10-A779-E63C8CE52459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456EFAE1-813B-4D10-A779-E63C8CE52459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456EFAE1-813B-4D10-A779-E63C8CE52459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456EFAE1-813B-4D10-A779-E63C8CE52459}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77BC1497-9532-4B1A-ADE9-DFEBE381679A}
+	EndGlobalSection
+EndGlobal
