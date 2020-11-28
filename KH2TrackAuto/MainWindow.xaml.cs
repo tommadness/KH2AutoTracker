@@ -20,23 +20,16 @@ namespace KH2TrackAuto
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-        const int HIGH_JUMP_ADDRESS = 0x0032E0FE;
-        const int ABILITY_BYTES = 2;
-        const int DEFAULT_BYTES = 1;
         private int ADDRESS_OFFSET = 0;
         private static System.Timers.Timer aTimer;
-
-        private string hjContent;
-        public string HJContent {
-            get { return hjContent; }
-            set { hjContent = value;
-                OnPropertyChanged("HJContent");}
-        }
+        private List<ImportantCheck> importantChecks = new List<ImportantCheck>();
+        private Ability highJump;
         public MainWindow()
         {
             InitializeComponent();
+            importantChecks.Add(highJump = new Ability());
             findAddressOffset();
             SetBindings();
             SetTimer();
@@ -70,9 +63,9 @@ namespace KH2TrackAuto
 
         private void SetBindings()
         {
-            Binding HJbinding = new Binding("HJContent");
-            HJbinding.Source = this;
-            HighJump.SetBinding(Label.ContentProperty, HJbinding);
+            Binding HJbinding = new Binding("Quantity");
+            HJbinding.Source = highJump;
+            HighJumpLabel.SetBinding(Label.ContentProperty, HJbinding);
         }
         private void SetTimer()
         {
@@ -88,7 +81,6 @@ namespace KH2TrackAuto
             {
                 findAddressOffset();
             }
-            HJContent = BytesToHex(new MemoryReader(HIGH_JUMP_ADDRESS+ADDRESS_OFFSET, ABILITY_BYTES).ReadMemory());
         }
         
         private string BytesToHex(byte[] bytes)
@@ -98,17 +90,6 @@ namespace KH2TrackAuto
                 return "Service not started. Waiting for PCSX2";
             }
             return BitConverter.ToString(bytes).Replace("-", "");
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string info)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(info));
-            }
         }
     }
 }
