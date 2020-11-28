@@ -13,10 +13,12 @@ namespace KH2TrackAuto
         public int Address;
         public int Bytes;
         public bool Obtained;
+        private int ADDRESS_OFFSET;
 
-        public ImportantCheck()
+        public ImportantCheck(int address, int offset)
         {
-
+            ADDRESS_OFFSET = offset;
+            Address = address;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -28,6 +30,11 @@ namespace KH2TrackAuto
             {
                 handler(this, new PropertyChangedEventArgs(info));
             }
+        }
+
+        public virtual byte[] UpdateMemory()
+        {
+            return new MemoryReader(Address + ADDRESS_OFFSET, Bytes).ReadMemory();
         }
     }
 }

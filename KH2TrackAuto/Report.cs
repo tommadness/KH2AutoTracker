@@ -10,7 +10,7 @@ namespace KH2TrackAuto
     {
         public string Content;
 
-        public Report()
+        public Report(int address, int offset) : base(address,offset)
         {
 
         }

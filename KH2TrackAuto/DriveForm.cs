@@ -10,7 +10,7 @@ namespace KH2TrackAuto
     {
         public int Level;
 
-        public DriveForm()
+        public DriveForm(int address, int offset) : base(address, offset)
         {
 
         }

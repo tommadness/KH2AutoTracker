@@ -8,6 +8,10 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label Name="HighJumpLabel" HorizontalAlignment="Left" Margin="227,291,0,0" VerticalAlignment="Top"/>
+        <Label Name="QuickRunLabel" HorizontalAlignment="Left" Margin="227,300,0,0" VerticalAlignment="Top"/>
+        <Label Name="DodgeRollLabel" HorizontalAlignment="Left" Margin="227,310,0,0" VerticalAlignment="Top"/>
+        <Label Name="AerialDodgeLabel" HorizontalAlignment="Left" Margin="227,320,0,0" VerticalAlignment="Top"/>
+        <Label Name="GlideLabel" HorizontalAlignment="Left" Margin="227,330,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

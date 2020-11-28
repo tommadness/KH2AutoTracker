@@ -22,14 +22,22 @@ namespace KH2TrackAuto
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int ADDRESS_OFFSET = 0;
+        private Int32 ADDRESS_OFFSET = 0;
         private static System.Timers.Timer aTimer;
         private List<ImportantCheck> importantChecks = new List<ImportantCheck>();
         private Ability highJump;
+        private Ability quickRun;
+        private Ability dodgeRoll;
+        private Ability aerialDodge;
+        private Ability glide;
         public MainWindow()
         {
             InitializeComponent();
-            importantChecks.Add(highJump = new Ability());
+            importantChecks.Add(highJump = new Ability(0x0032E0FE, ADDRESS_OFFSET));
+            importantChecks.Add(quickRun = new Ability(0x0032E100, ADDRESS_OFFSET));
+            importantChecks.Add(dodgeRoll = new Ability(0x0032E102, ADDRESS_OFFSET));
+            importantChecks.Add(aerialDodge = new Ability(0x0032E104, ADDRESS_OFFSET));
+            importantChecks.Add(glide = new Ability(0x0032E106, ADDRESS_OFFSET));
             findAddressOffset();
             SetBindings();
             SetTimer();
@@ -39,9 +47,9 @@ namespace KH2TrackAuto
         private void findAddressOffset()
         {
             bool found = false;
-            int offset = 0x00000000;
-            int testAddr = 0x0010001C;
-            string good = "0C28";
+            Int32 offset = 0x00000000;
+            Int32 testAddr = 0x0010001C;
+            string good = "280C";
             while (!found)
             {
                 string tester = BytesToHex(new MemoryReader(testAddr + offset, 2).ReadMemory());
@@ -63,7 +71,7 @@ namespace KH2TrackAuto
 
         private void SetBindings()
         {
-            Binding HJbinding = new Binding("Quantity");
+            Binding HJbinding = new Binding("Level");
             HJbinding.Source = highJump;
             HighJumpLabel.SetBinding(Label.ContentProperty, HJbinding);
         }
@@ -81,6 +89,10 @@ namespace KH2TrackAuto
             {
                 findAddressOffset();
             }
+            importantChecks.ForEach(delegate (ImportantCheck importantCheck)
+            {
+                importantCheck.UpdateMemory();
+            });
         }
         
         private string BytesToHex(byte[] bytes)

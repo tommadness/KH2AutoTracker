@@ -35,7 +35,7 @@ namespace KH2TrackAuto
                 byte[] buffer = new byte[bytesToRead]; 
 
                 ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
-                Array.Reverse(buffer, 0, buffer.Length);
+                //Array.Reverse(buffer, 0, buffer.Length);
                 return buffer;
             }
             catch (IndexOutOfRangeException e)

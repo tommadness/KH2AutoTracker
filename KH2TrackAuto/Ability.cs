@@ -10,9 +10,29 @@ namespace KH2TrackAuto
     {
         const int ADDRESS_START = 0x0032E074;
         const int ADDRESS_END = 0x0032E112;
-        public Ability()
+
+        private int level;
+        public int Level { get { return level; }
+            set
+            {
+                level = value;
+                OnPropertyChanged("Level");
+            }
+        }
+
+        private int levelOffset;
+
+        public Ability(int address, int offset) : base(address, offset)
         {
-        
+            Bytes = 2;
+        }
+
+        public override byte[] UpdateMemory()
+        {
+            byte[] data = base.UpdateMemory();
+            Console.WriteLine(BitConverter.ToString(data));
+            Level = BitConverter.ToUInt16(data,0);
+            return null;
         }
     }
 }
