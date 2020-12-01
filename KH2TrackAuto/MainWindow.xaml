@@ -5,13 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KH2TrackAuto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Name="HighJumpLabel" HorizontalAlignment="Left" Margin="227,291,0,0" VerticalAlignment="Top"/>
-        <Label Name="QuickRunLabel" HorizontalAlignment="Left" Margin="227,300,0,0" VerticalAlignment="Top"/>
-        <Label Name="DodgeRollLabel" HorizontalAlignment="Left" Margin="227,310,0,0" VerticalAlignment="Top"/>
-        <Label Name="AerialDodgeLabel" HorizontalAlignment="Left" Margin="227,320,0,0" VerticalAlignment="Top"/>
-        <Label Name="GlideLabel" HorizontalAlignment="Left" Margin="227,330,0,0" VerticalAlignment="Top"/>
-
-    </Grid>
+        Title="MainWindow" Height="750" Width="400"
+        AllowsTransparency="True"
+        Background="#EE333333"
+        WindowStyle="None" FontSize="24" FontFamily="/KH2TrackAuto;component/Resources/#KH2 ALL MENU"
+        >
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Yellow"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical">
+        <UniformGrid Name="GrowthAbilities" Columns="5">
+            <Label Name="HighJumpLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Name="QuickRunLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Name="DodgeRollLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Name="AerialDodgeLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Name="GlideLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </UniformGrid>
+        <UniformGrid Name="DriveForms" Columns="5">
+            <Label Name="ValorLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="WisdomLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="LimitLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="MasterLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="FinalLabel" Content="0" HorizontalAlignment="Center"/>
+        </UniformGrid>
+        <UniformGrid Name="Magic" Rows="2" Columns="3">
+            <Label Name="FireLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="BlizzardLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="ThunderLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="CureLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="ReflectLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="MagnetLabel" Content="0" HorizontalAlignment="Center"/>
+        </UniformGrid>
+        <UniformGrid Name="Proofs" Columns="4">
+            <Label Name="ProofNonExistenceLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="ProofConnectionLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="ProofPeaceLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="ProofPromiseCharmLabel" Content="0" HorizontalAlignment="Center"/>
+        </UniformGrid>
+        <UniformGrid Name="Summons" Columns="4">
+            <Label Name="StitchLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="ChickenLittleLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="GenieLabel" Content="0" HorizontalAlignment="Center"/>
+            <Label Name="PeterPanLabel" Content="0" HorizontalAlignment="Center"/>
+        </UniformGrid>
+    </StackPanel>
 </Window>

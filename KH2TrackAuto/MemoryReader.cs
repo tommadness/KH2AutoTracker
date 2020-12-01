@@ -15,22 +15,23 @@ namespace KH2TrackAuto
         [DllImport("kernel32.dll")]
         public static extern bool ReadProcessMemory(int hProcess, int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
 
-        Int32 address;
-        int bytesToRead;
-        public MemoryReader(Int32 addr, int bytes)
+        Process process;
+        IntPtr processHandle;
+        public MemoryReader()
         {
-            address = addr;
-            bytesToRead = bytes;
-
+            process = Process.GetProcessesByName("pcsx2")[0];
+            processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
         }
 
-        public byte[] ReadMemory()
+        public byte[] ReadMemory(Int32 address, int bytesToRead)
         {
-            Process process = new Process();
             try
             {
-                process = Process.GetProcessesByName("pcsx2")[0];
-                IntPtr processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
+                if (process.HasExited)
+                {
+                    process = Process.GetProcessesByName("pcsx2")[0];
+                    processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
+                }
                 int bytesRead = 0;
                 byte[] buffer = new byte[bytesToRead]; 
 

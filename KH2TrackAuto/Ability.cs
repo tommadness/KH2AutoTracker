@@ -22,16 +22,41 @@ namespace KH2TrackAuto
 
         private int levelOffset;
 
-        public Ability(int address, int offset) : base(address, offset)
+        public Ability(MemoryReader mem, int address, int offset) : base(mem, address, offset)
         {
             Bytes = 2;
+            levelOffset = 0;
+        }
+
+        public Ability(MemoryReader mem, int address, int offset, int levOffset) : base(mem, address, offset)
+        {
+            Bytes = 2;
+            levelOffset = levOffset;
         }
 
         public override byte[] UpdateMemory()
         {
             byte[] data = base.UpdateMemory();
-            Console.WriteLine(BitConverter.ToString(data));
-            Level = BitConverter.ToUInt16(data,0);
+            int convertedData = BitConverter.ToUInt16(data,0);
+            int equipped = 0;
+            if (levelOffset > 0 && convertedData > 0)
+            {
+                if (convertedData > 32768)
+                {
+                    equipped = 32768;
+                }
+
+                Level = convertedData - levelOffset - equipped;
+            }
+            else
+            {
+                Level = 0;
+            }
+
+            if (Obtained == false && Level >= 1)
+            {
+                Obtained = true;
+            }
             return null;
         }
     }

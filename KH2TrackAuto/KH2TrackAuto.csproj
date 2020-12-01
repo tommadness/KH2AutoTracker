@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,7 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Magic.cs" />
+    <Compile Include="Summon.cs" />
     <Compile Include="Report.cs" />
+    <Compile Include="TornPage.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,9 +113,85 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\KH2_ALL_MENU_I.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Simple\100_acre_wood.png" />
+    <Resource Include="Simple\agrabah.png" />
+    <Resource Include="Simple\ansem_report.png" />
+    <Resource Include="Simple\ansem_report1.cur" />
+    <Resource Include="Simple\ansem_report1.png" />
+    <Resource Include="Simple\ansem_report10.png" />
+    <Resource Include="Simple\ansem_report11.png" />
+    <Resource Include="Simple\ansem_report12.png" />
+    <Resource Include="Simple\ansem_report13.png" />
+    <Resource Include="Simple\ansem_report2.png" />
+    <Resource Include="Simple\ansem_report3.png" />
+    <Resource Include="Simple\ansem_report4.png" />
+    <Resource Include="Simple\ansem_report5.png" />
+    <Resource Include="Simple\ansem_report6.png" />
+    <Resource Include="Simple\ansem_report7.png" />
+    <Resource Include="Simple\ansem_report8.png" />
+    <Resource Include="Simple\ansem_report9.png" />
+    <Resource Include="Simple\atlantica.png" />
+    <Resource Include="Simple\beast%27s_castle.png" />
+    <Resource Include="Simple\blizzard.png" />
+    <Resource Include="Simple\cavern_of_remembrance.png" />
+    <Resource Include="Simple\chicken_little.png" />
+    <Resource Include="Simple\cure.png" />
+    <Resource Include="Simple\disney_castle.png" />
+    <Resource Include="Simple\drive_form.png" />
+    <Resource Include="Simple\drive_forms.png" />
+    <Resource Include="Simple\Drive_Orb_KHII.png" />
+    <Resource Include="Simple\final.png" />
+    <Resource Include="Simple\fire.png" />
+    <Resource Include="Simple\genie.png" />
+    <Resource Include="Simple\halloween_town.png" />
+    <Resource Include="Simple\hollow_bastion.png" />
+    <Resource Include="Simple\land_of_dragons.png" />
+    <Resource Include="Simple\limit.png" />
+    <Resource Include="Simple\magnet.png" />
+    <Resource Include="Simple\master.png" />
+    <Resource Include="Simple\olympus_coliseum.png" />
+    <Resource Include="Simple\once_more.png" />
+    <Resource Include="Simple\peter_pan.png" />
+    <Resource Include="Simple\port_royal.png" />
+    <Resource Include="Simple\pride_land.png" />
+    <Resource Include="Simple\promise_charm.png" />
+    <Resource Include="Simple\proof_of_connection.png" />
+    <Resource Include="Simple\proof_of_nonexistence.png" />
+    <Resource Include="Simple\proof_of_tranquility.png" />
+    <Resource Include="Simple\reflect.png" />
+    <Resource Include="Simple\replica_data.png" />
+    <Resource Include="Simple\second_chance.png" />
+    <Resource Include="Simple\simulated_twilight_town.png" />
+    <Resource Include="Simple\sora%27s_level.png" />
+    <Resource Include="Simple\space_paranoids.png" />
+    <Resource Include="Simple\stitch.png" />
+    <Resource Include="Simple\the_world_that_never_was.png" />
+    <Resource Include="Simple\thunder.png" />
+    <Resource Include="Simple\timeless_river.png" />
+    <Resource Include="Simple\twilight_town.png" />
+    <Resource Include="Simple\underdrome_cups.png" />
+    <Resource Include="Simple\valor.png" />
+    <Resource Include="Simple\wisdom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

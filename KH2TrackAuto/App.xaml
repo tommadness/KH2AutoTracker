@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:KH2TrackAuto"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <FontFamily x:Key="KHFont">/KH2TrackAuto;component/Resources/#KH2 ALL MENU</FontFamily>
+
     </Application.Resources>
 </Application>

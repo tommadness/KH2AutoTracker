@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
 using System.ComponentModel;
-
+using System.Runtime.InteropServices;
 namespace KH2TrackAuto
 {
     /// <summary>
@@ -22,23 +22,109 @@ namespace KH2TrackAuto
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Int32 ADDRESS_OFFSET = 0;
+        MemoryReader memory;
+
+        private Int32 ADDRESS_OFFSET;
         private static System.Timers.Timer aTimer;
-        private List<ImportantCheck> importantChecks = new List<ImportantCheck>();
+        private List<ImportantCheck> importantChecks;
         private Ability highJump;
         private Ability quickRun;
         private Ability dodgeRoll;
         private Ability aerialDodge;
         private Ability glide;
+
+        private DriveForm valor;
+        private DriveForm wisdom;
+        private DriveForm master;
+        private DriveForm limit;
+        private DriveForm final;
+
+        private Magic fire;
+        private Magic blizzard;
+        private Magic thunder;
+        private Magic magnet;
+        private Magic reflect;
+        private Magic cure;
+
+        private Report rep1;
+        private Report rep2;
+        private Report rep3;
+        private Report rep4;
+        private Report rep5;
+        private Report rep6;
+        private Report rep7;
+        private Report rep8;
+        private Report rep9;
+        private Report rep10;
+        private Report rep11;
+        private Report rep12;
+        private Report rep13;
+
+        private Summon chickenLittle;
+        private Summon stitch;
+        private Summon genie;
+        private Summon peterPan;
+
+        private ImportantCheck promiseCharm;
+        private ImportantCheck peace;
+        private ImportantCheck nonexist;
+        private ImportantCheck connection;
+
+        private TornPage pages;
+
         public MainWindow()
         {
             InitializeComponent();
-            importantChecks.Add(highJump = new Ability(0x0032E0FE, ADDRESS_OFFSET));
-            importantChecks.Add(quickRun = new Ability(0x0032E100, ADDRESS_OFFSET));
-            importantChecks.Add(dodgeRoll = new Ability(0x0032E102, ADDRESS_OFFSET));
-            importantChecks.Add(aerialDodge = new Ability(0x0032E104, ADDRESS_OFFSET));
-            importantChecks.Add(glide = new Ability(0x0032E106, ADDRESS_OFFSET));
+            memory = new MemoryReader();
+            this.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./resources/#KH2 ALL MENU");
             findAddressOffset();
+
+            importantChecks = new List<ImportantCheck>();
+            importantChecks.Add(highJump = new Ability(memory, 0x0032E0FE, ADDRESS_OFFSET, 93));
+            importantChecks.Add(quickRun = new Ability(memory, 0x0032E100, ADDRESS_OFFSET, 97));
+            importantChecks.Add(dodgeRoll = new Ability(memory, 0x0032E102, ADDRESS_OFFSET, 563));
+            importantChecks.Add(aerialDodge = new Ability(memory, 0x0032E104, ADDRESS_OFFSET, 101));
+            importantChecks.Add(glide = new Ability(memory, 0x0032E106, ADDRESS_OFFSET, 105));
+
+            importantChecks.Add(valor = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 1, 0x0032EE26));
+            importantChecks.Add(wisdom = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 2, 0x0032EE5E));
+            importantChecks.Add(master = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 6, 0x0032EE26));
+            importantChecks.Add(limit = new DriveForm(memory, 0x0032F1FA, ADDRESS_OFFSET, 3, 0x0032EE26));
+            importantChecks.Add(final = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 4, 0x0032EE26));
+
+            importantChecks.Add(fire = new Magic(memory, 0x0032F0C4, ADDRESS_OFFSET));
+            importantChecks.Add(blizzard = new Magic(memory, 0x0032F0C5, ADDRESS_OFFSET));
+            importantChecks.Add(thunder = new Magic(memory, 0x0032F0C6, ADDRESS_OFFSET));
+            importantChecks.Add(cure = new Magic(memory, 0x0032F0C7, ADDRESS_OFFSET));
+            importantChecks.Add(magnet = new Magic(memory, 0x0032F0FF, ADDRESS_OFFSET));
+            importantChecks.Add(reflect = new Magic(memory, 0x0032F100, ADDRESS_OFFSET));
+
+            importantChecks.Add(rep1 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 6));
+            importantChecks.Add(rep2 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 7));
+            importantChecks.Add(rep3 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 0));
+            importantChecks.Add(rep4 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 1));
+            importantChecks.Add(rep5 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 2));
+            importantChecks.Add(rep6 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 3));
+            importantChecks.Add(rep7 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 4));
+            importantChecks.Add(rep8 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 5));
+            importantChecks.Add(rep9 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 6));
+            importantChecks.Add(rep10 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 7));
+            importantChecks.Add(rep11 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 1));
+            importantChecks.Add(rep12 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 2));
+            importantChecks.Add(rep13 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 3));
+
+            importantChecks.Add(chickenLittle = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 3));
+            importantChecks.Add(stitch = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 0));
+            importantChecks.Add(genie = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 4));
+            importantChecks.Add(peterPan = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 5));
+
+            importantChecks.Add(promiseCharm = new ImportantCheck(memory, 0x0032F1C4, ADDRESS_OFFSET));
+            importantChecks.Add(peace = new ImportantCheck(memory, 0x0032F1E4, ADDRESS_OFFSET));
+            importantChecks.Add(nonexist = new ImportantCheck(memory, 0x0032F1E3, ADDRESS_OFFSET));
+            importantChecks.Add(connection = new ImportantCheck(memory, 0x0032F1E2, ADDRESS_OFFSET));
+
+            importantChecks.Add(pages = new TornPage(memory, 0x0032F0C8, ADDRESS_OFFSET));
+
             SetBindings();
             SetTimer();
             OnTimedEvent(null, null);
@@ -52,7 +138,7 @@ namespace KH2TrackAuto
             string good = "280C";
             while (!found)
             {
-                string tester = BytesToHex(new MemoryReader(testAddr + offset, 2).ReadMemory());
+                string tester = BytesToHex(memory.ReadMemory(testAddr + offset, 2));
                 if (tester == "Service not started. Waiting for PCSX2")
                 {
                     break;
@@ -74,6 +160,34 @@ namespace KH2TrackAuto
             Binding HJbinding = new Binding("Level");
             HJbinding.Source = highJump;
             HighJumpLabel.SetBinding(Label.ContentProperty, HJbinding);
+            Binding QRbinding = new Binding("Level");
+            QRbinding.Source = quickRun;
+            QuickRunLabel.SetBinding(Label.ContentProperty, QRbinding);
+            Binding DRbinding = new Binding("Level");
+            DRbinding.Source = dodgeRoll;
+            DodgeRollLabel.SetBinding(Label.ContentProperty, DRbinding);
+            Binding Glidebinding = new Binding("Level");
+            Glidebinding.Source = glide;
+            GlideLabel.SetBinding(Label.ContentProperty, Glidebinding);
+            Binding ADbinding = new Binding("Level");
+            ADbinding.Source = aerialDodge;
+            AerialDodgeLabel.SetBinding(Label.ContentProperty, ADbinding);
+
+            Binding ValorLevelbinding = new Binding("Level");
+            ValorLevelbinding.Source = valor;
+            ValorLabel.SetBinding(Label.ContentProperty, ValorLevelbinding);
+            Binding WisdomLevelbinding = new Binding("Level");
+            WisdomLevelbinding.Source = wisdom;
+            WisdomLabel.SetBinding(Label.ContentProperty, WisdomLevelbinding);
+            Binding LimitLevelbinding = new Binding("Level");
+            LimitLevelbinding.Source = limit;
+            LimitLabel.SetBinding(Label.ContentProperty, LimitLevelbinding);
+            Binding MasterLevelbinding = new Binding("Level");
+            MasterLevelbinding.Source = master;
+            MasterLabel.SetBinding(Label.ContentProperty, MasterLevelbinding);
+            Binding FinalLevelbinding = new Binding("Level");
+            FinalLevelbinding.Source = final;
+            FinalLabel.SetBinding(Label.ContentProperty, FinalLevelbinding);
         }
         private void SetTimer()
         {
@@ -102,6 +216,13 @@ namespace KH2TrackAuto
                 return "Service not started. Waiting for PCSX2";
             }
             return BitConverter.ToString(bytes).Replace("-", "");
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
         }
     }
 }
