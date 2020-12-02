@@ -8,11 +8,27 @@ namespace KH2TrackAuto
 {
     class TornPage : ImportantCheck
     {
-        public int Quantity;
+        private int quantity;
+        public int Quantity
+        {
+            get { return quantity; }
+            set
+            {
+                quantity = value;
+                OnPropertyChanged("Quantity");
+            }
+        }
 
         public TornPage(MemoryReader mem, int address, int offset) : base(mem, address, offset)
         {
 
+        }
+
+        public override byte[] UpdateMemory()
+        {
+            byte[] data = base.UpdateMemory();
+            Quantity = data[0];
+            return null;
         }
     }
 }

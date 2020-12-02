@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace KH2TrackAuto
 {
@@ -14,6 +15,13 @@ namespace KH2TrackAuto
         {
             Bytes = 2;
             byteNum = byteNumber;
+        }
+
+        public override byte[] UpdateMemory()
+        {
+            byte[] data = base.UpdateMemory();
+            Obtained = new BitArray(data)[byteNum];
+            return null;
         }
     }
 }

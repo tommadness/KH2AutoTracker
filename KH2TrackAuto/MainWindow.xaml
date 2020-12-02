@@ -5,14 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KH2TrackAuto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="400"
+        Title="MainWindow" Height="700" Width="480"
         AllowsTransparency="True"
         Background="#EE333333"
-        WindowStyle="None" FontSize="24" FontFamily="/KH2TrackAuto;component/Resources/#KH2 ALL MENU"
+        WindowStyle="None" FontSize="18" FontFamily="/KH2TrackAuto;component/Resources/#KH2 ALL MENU"
         >
     <Window.Resources>
         <Style TargetType="Label">
             <Setter Property="Foreground" Value="Yellow"></Setter>
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="Opacity" Value=".2"></Setter>
+        </Style>
+        <Style TargetType="UniformGrid">
+            <Setter Property="MinHeight" Value="50"></Setter>
         </Style>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
@@ -24,31 +31,77 @@
             <Label Name="GlideLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </UniformGrid>
         <UniformGrid Name="DriveForms" Columns="5">
-            <Label Name="ValorLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="WisdomLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="LimitLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="MasterLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="FinalLabel" Content="0" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <Image Name="ValorImage" Source="Simple/valor.png"></Image>
+                <Label Name="ValorLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="WisdomImage" Source="Simple/wisdom.png"></Image>
+                <Label Name="WisdomLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="LimitImage" Source="Simple/limit.png"></Image>
+                <Label Name="LimitLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="MasterImage" Source="Simple/master.png"></Image>
+                <Label Name="MasterLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="FinalImage" Source="Simple/final.png"></Image>
+                <Label Name="FinalLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
         </UniformGrid>
         <UniformGrid Name="Magic" Rows="2" Columns="3">
-            <Label Name="FireLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="BlizzardLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="ThunderLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="CureLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="ReflectLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="MagnetLabel" Content="0" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <Image Name="FireImage" Source="Simple/fire.png"></Image>
+                <Label Name="FireLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="BlizzardImage" Source="Simple/blizzard.png"></Image>
+                <Label Name="BlizzardLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="ThunderImage" Source="Simple/thunder.png"></Image>
+                <Label Name="ThunderLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="CureImage" Source="Simple/cure.png"></Image>
+                <Label Name="CureLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="MagnetImage" Source="Simple/magnet.png"></Image>
+                <Label Name="MagnetLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="ReflectImage" Source="Simple/reflect.png"></Image>
+                <Label Name="ReflectLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
+            </StackPanel>
         </UniformGrid>
         <UniformGrid Name="Proofs" Columns="4">
-            <Label Name="ProofNonExistenceLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="ProofConnectionLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="ProofPeaceLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="ProofPromiseCharmLabel" Content="0" HorizontalAlignment="Center"/>
+            <Image Name="ProofNonExistenceImage" Source="Simple/proof_of_nonexistence.png" HorizontalAlignment="Center"/>
+            <Image Name="ProofPeaceImage" Source="Simple/proof_of_tranquility.png" HorizontalAlignment="Center"/>
+            <Image Name="ProofConnectionImage" Source="Simple/proof_of_connection.png" HorizontalAlignment="Center"/>
+            <Image Name="PromiseCharmImage" Source="Simple/promise_charm.png" HorizontalAlignment="Center"/>
         </UniformGrid>
         <UniformGrid Name="Summons" Columns="4">
-            <Label Name="StitchLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="ChickenLittleLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="GenieLabel" Content="0" HorizontalAlignment="Center"/>
-            <Label Name="PeterPanLabel" Content="0" HorizontalAlignment="Center"/>
+            <Image Name="StitchImage" Source="Simple/stitch.png" HorizontalAlignment="Center"/>
+            <Image Name="ChickenLittleImage" Source="Simple/chicken_little.png" HorizontalAlignment="Center"/>
+            <Image Name="GenieImage" Source="Simple/genie.png" HorizontalAlignment="Center"/>
+            <Image Name="PeterPanImage" Source="Simple/peter_pan.png" HorizontalAlignment="Center"/>
+        </UniformGrid>
+
+        <UniformGrid Columns="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="Simple/torn_page.png" Opacity="1"></Image>
+                <Label Name="TornPagesLabel" Content="0" HorizontalAlignment="Center"/>
+                <Label Content="\ 5"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="Simple/ansem_report.png" Opacity="1"></Image>
+                <Label Name="ReportsLabel" Content="0" HorizontalAlignment="Center"></Label>
+                <Label Content="\ 13"></Label>
+            </StackPanel>
         </UniformGrid>
     </StackPanel>
 </Window>

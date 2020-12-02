@@ -17,10 +17,21 @@ namespace KH2TrackAuto
 
         Process process;
         IntPtr processHandle;
+        public bool Hooked;
         public MemoryReader()
         {
-            process = Process.GetProcessesByName("pcsx2")[0];
-            processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
+            try
+            {
+                process = Process.GetProcessesByName("pcsx2")[0];
+                processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Hooked = false;
+                return;
+            }
+                Hooked = true;
+
         }
 
         public byte[] ReadMemory(Int32 address, int bytesToRead)

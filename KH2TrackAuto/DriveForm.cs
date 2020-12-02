@@ -9,7 +9,16 @@ namespace KH2TrackAuto
 {
     class DriveForm : ImportantCheck
     {
-        public int Level;
+        private int level = 0;
+        public int Level
+        {
+            get { return level; }
+            set
+            {
+                level = value;
+                OnPropertyChanged("Level");
+            }
+        }
         private int byteNum;
         private int levelAddr;
 
@@ -24,7 +33,15 @@ namespace KH2TrackAuto
         {
             byte[] data = base.UpdateMemory();
             Obtained = new BitArray(data)[byteNum];
-            Level = memory.ReadMemory(levelAddr + ADDRESS_OFFSET, Bytes)[0];
+            byte[] levelData = memory.ReadMemory(levelAddr + ADDRESS_OFFSET, 1);
+            if (Obtained == true)
+            {
+                Level = levelData[0];
+            }
+            if (levelData[0] > 1)
+            {
+                Level = levelData[0];
+            }
             return null;
         }
     }

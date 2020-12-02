@@ -75,7 +75,10 @@ namespace KH2TrackAuto
         public MainWindow()
         {
             InitializeComponent();
-            memory = new MemoryReader();
+            do
+            {
+                memory = new MemoryReader();
+            } while (!memory.Hooked);
             this.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./resources/#KH2 ALL MENU");
             findAddressOffset();
 
@@ -157,37 +160,47 @@ namespace KH2TrackAuto
 
         private void SetBindings()
         {
-            Binding HJbinding = new Binding("Level");
-            HJbinding.Source = highJump;
-            HighJumpLabel.SetBinding(Label.ContentProperty, HJbinding);
-            Binding QRbinding = new Binding("Level");
-            QRbinding.Source = quickRun;
-            QuickRunLabel.SetBinding(Label.ContentProperty, QRbinding);
-            Binding DRbinding = new Binding("Level");
-            DRbinding.Source = dodgeRoll;
-            DodgeRollLabel.SetBinding(Label.ContentProperty, DRbinding);
-            Binding Glidebinding = new Binding("Level");
-            Glidebinding.Source = glide;
-            GlideLabel.SetBinding(Label.ContentProperty, Glidebinding);
-            Binding ADbinding = new Binding("Level");
-            ADbinding.Source = aerialDodge;
-            AerialDodgeLabel.SetBinding(Label.ContentProperty, ADbinding);
+            highJump.BindLabel(HighJumpLabel, "Level");
+            quickRun.BindLabel(QuickRunLabel, "Level");
+            aerialDodge.BindLabel(AerialDodgeLabel, "Level");
+            dodgeRoll.BindLabel(DodgeRollLabel, "Level");
+            glide.BindLabel(GlideLabel, "Level");
 
-            Binding ValorLevelbinding = new Binding("Level");
-            ValorLevelbinding.Source = valor;
-            ValorLabel.SetBinding(Label.ContentProperty, ValorLevelbinding);
-            Binding WisdomLevelbinding = new Binding("Level");
-            WisdomLevelbinding.Source = wisdom;
-            WisdomLabel.SetBinding(Label.ContentProperty, WisdomLevelbinding);
-            Binding LimitLevelbinding = new Binding("Level");
-            LimitLevelbinding.Source = limit;
-            LimitLabel.SetBinding(Label.ContentProperty, LimitLevelbinding);
-            Binding MasterLevelbinding = new Binding("Level");
-            MasterLevelbinding.Source = master;
-            MasterLabel.SetBinding(Label.ContentProperty, MasterLevelbinding);
-            Binding FinalLevelbinding = new Binding("Level");
-            FinalLevelbinding.Source = final;
-            FinalLabel.SetBinding(Label.ContentProperty, FinalLevelbinding);
+            valor.BindLabel(ValorLabel, "Level");
+            valor.BindImage(ValorImage, "Obtained");
+            wisdom.BindLabel(WisdomLabel, "Level");
+            wisdom.BindImage(WisdomImage, "Obtained");
+            master.BindLabel(MasterLabel, "Level");
+            master.BindImage(MasterImage, "Obtained");
+            limit.BindLabel(LimitLabel, "Level");
+            limit.BindImage(LimitImage, "Obtained");
+            final.BindLabel(FinalLabel, "Level");
+            final.BindImage(FinalImage, "Obtained");
+
+            fire.BindLabel(FireLabel, "Level");
+            fire.BindImage(FireImage, "Obtained");
+            blizzard.BindLabel(BlizzardLabel, "Level");
+            blizzard.BindImage(BlizzardImage, "Obtained");
+            thunder.BindLabel(ThunderLabel, "Level");
+            thunder.BindImage(ThunderImage, "Obtained");
+            cure.BindLabel(CureLabel, "Level");
+            cure.BindImage(CureImage, "Obtained");
+            magnet.BindLabel(MagnetLabel, "Level");
+            magnet.BindImage(MagnetImage, "Obtained");
+            reflect.BindLabel(ReflectLabel, "Level");
+            reflect.BindImage(ReflectImage, "Obtained");
+
+            pages.BindLabel(TornPagesLabel, "Quantity", false);
+
+            nonexist.BindImage(ProofNonExistenceImage, "Obtained");
+            peace.BindImage(ProofPeaceImage, "Obtained");
+            connection.BindImage(ProofConnectionImage, "Obtained");
+            promiseCharm.BindImage(PromiseCharmImage, "Obtained");
+
+            stitch.BindImage(StitchImage, "Obtained");
+            chickenLittle.BindImage(ChickenLittleImage, "Obtained");
+            genie.BindImage(GenieImage, "Obtained");
+            peterPan.BindImage(PeterPanImage, "Obtained");
         }
         private void SetTimer()
         {

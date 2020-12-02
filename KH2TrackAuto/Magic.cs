@@ -11,7 +11,15 @@ namespace KH2TrackAuto
     class Magic : ImportantCheck
     {
         private int level;
-        public int Level { get => level; set => level = value; }
+        public int Level
+        {
+            get { return level; }
+            set
+            {
+                level = value;
+                OnPropertyChanged("Level");
+            }
+        }
         public Magic(MemoryReader mem, int address, int offset) : base(mem, address, offset)
         {
 
