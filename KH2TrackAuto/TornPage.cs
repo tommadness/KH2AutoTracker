@@ -8,7 +8,7 @@ namespace KH2TrackAuto
 {
     class TornPage : ImportantCheck
     {
-        private int quantity;
+        private int quantity = 0;
         public int Quantity
         {
             get { return quantity; }
@@ -18,6 +18,8 @@ namespace KH2TrackAuto
                 OnPropertyChanged("Quantity");
             }
         }
+
+        private int oldData = 0;
 
         public TornPage(MemoryReader mem, int address, int offset) : base(mem, address, offset)
         {

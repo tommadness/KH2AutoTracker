@@ -71,6 +71,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Magic.cs" />
+    <Compile Include="Proof.cs" />
+    <Compile Include="ReportsHandler.cs" />
     <Compile Include="Summon.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="TornPage.cs" />
@@ -196,6 +198,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Simple\torn_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Simple\aerial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Simple\dodge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Simple\glide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Simple\jump.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Simple\quick.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

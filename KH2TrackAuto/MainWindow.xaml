@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KH2TrackAuto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="480"
-        AllowsTransparency="True"
-        Background="#EE333333"
-        WindowStyle="None" FontSize="18" FontFamily="/KH2TrackAuto;component/Resources/#KH2 ALL MENU"
+        Title="KH2 Autotracker" Height="700" Width="480"
+        Background="#333333"
+        FontSize="18" FontFamily="/KH2TrackAuto;component/Resources/#KH2 ALL MENU"
         >
     <Window.Resources>
         <Style TargetType="Label">
@@ -24,11 +23,26 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical">
         <UniformGrid Name="GrowthAbilities" Columns="5">
-            <Label Name="HighJumpLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Name="QuickRunLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Name="DodgeRollLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Name="AerialDodgeLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Name="GlideLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <StackPanel>
+                <Image Name="HighJumpImage" Source="Simple/jump.png"></Image>
+                <Label Name="HighJumpLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="QuickRunImage" Source="Simple/quick.png"></Image>
+                <Label Name="QuickRunLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="DodgeRollImage" Source="Simple/dodge.png"></Image>
+                <Label Name="DodgeRollLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="AerialDodgeImage" Source="Simple/aerial.png"></Image>
+                <Label Name="AerialDodgeLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -30 -35 0"/>
+            </StackPanel>
+            <StackPanel>
+                <Image Name="GlideImage" Source="Simple/glide.png"></Image>
+                <Label Name="GlideLabel" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -30 -35 0"/>
+            </StackPanel>
         </UniformGrid>
         <UniformGrid Name="DriveForms" Columns="5">
             <StackPanel>
@@ -52,7 +66,7 @@
                 <Label Name="FinalLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
             </StackPanel>
         </UniformGrid>
-        <UniformGrid Name="Magic" Rows="2" Columns="3">
+        <UniformGrid Name="Magic" Columns="6">
             <StackPanel>
                 <Image Name="FireImage" Source="Simple/fire.png"></Image>
                 <Label Name="FireLabel" Content="0" HorizontalAlignment="Center" Margin="0 -30 -35 0"/>
