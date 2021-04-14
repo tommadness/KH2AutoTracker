@@ -24,7 +24,7 @@ namespace KH2TrackAuto
     {
         MemoryReader memory;
 
-        private Int32 ADDRESS_OFFSET;
+        private Int32 ADDRESS_OFFSET = 0;
         private static System.Timers.Timer aTimer;
         private List<ImportantCheck> importantChecks;
         private List<Report> reports;
@@ -82,35 +82,38 @@ namespace KH2TrackAuto
                 memory = new MemoryReader();
             } while (!memory.Hooked);
             this.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./resources/#KH2 ALL MENU");
-            findAddressOffset();
+            //findAddressOffset();
 
             importantChecks = new List<ImportantCheck>();
-            importantChecks.Add(highJump = new Ability(memory, 0x0032E0FE, ADDRESS_OFFSET, 93));
-            importantChecks.Add(quickRun = new Ability(memory, 0x0032E100, ADDRESS_OFFSET, 97));
-            importantChecks.Add(dodgeRoll = new Ability(memory, 0x0032E102, ADDRESS_OFFSET, 563));
-            importantChecks.Add(aerialDodge = new Ability(memory, 0x0032E104, ADDRESS_OFFSET, 101));
-            importantChecks.Add(glide = new Ability(memory, 0x0032E106, ADDRESS_OFFSET, 105));
+            int Save = 0x09A7070;
+            importantChecks.Add(highJump = new Ability(memory, Save + 0x25CE, ADDRESS_OFFSET, 93));
+            importantChecks.Add(quickRun = new Ability(memory, Save + 0x25D0, ADDRESS_OFFSET, 97));
+            importantChecks.Add(dodgeRoll = new Ability(memory, Save + 0x25D2, ADDRESS_OFFSET, 563));
+            importantChecks.Add(aerialDodge = new Ability(memory, Save + 0x25D4, ADDRESS_OFFSET, 101));
+            importantChecks.Add(glide = new Ability(memory, Save + 0x25D6, ADDRESS_OFFSET, 105));
 
-            importantChecks.Add(valor = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 1, 0x0032EE26));
-            importantChecks.Add(wisdom = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 2, 0x0032EE5E));
-            importantChecks.Add(master = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 6, 0x0032EE26));
-            importantChecks.Add(limit = new DriveForm(memory, 0x0032F1FA, ADDRESS_OFFSET, 3, 0x0032EE26));
-            importantChecks.Add(final = new DriveForm(memory, 0x0032F1F0, ADDRESS_OFFSET, 4, 0x0032EE26));
+            importantChecks.Add(valor = new DriveForm(memory, Save + 0x36C0, ADDRESS_OFFSET, 1, 0x0032EE26));
+            importantChecks.Add(wisdom = new DriveForm(memory, Save + 0x36C0, ADDRESS_OFFSET, 2, 0x0032EE5E));
+            importantChecks.Add(master = new DriveForm(memory, Save + 0x36C0, ADDRESS_OFFSET, 6, 0x0032EE26));
+            importantChecks.Add(limit = new DriveForm(memory, Save + 0x36CA, ADDRESS_OFFSET, 3, 0x0032EE26));
+            importantChecks.Add(final = new DriveForm(memory, Save + 0x36C0, ADDRESS_OFFSET, 4, 0x0032EE26));
 
-            importantChecks.Add(fire = new Magic(memory, 0x0032F0C4, ADDRESS_OFFSET));
-            importantChecks.Add(blizzard = new Magic(memory, 0x0032F0C5, ADDRESS_OFFSET));
-            importantChecks.Add(thunder = new Magic(memory, 0x0032F0C6, ADDRESS_OFFSET));
-            importantChecks.Add(cure = new Magic(memory, 0x0032F0C7, ADDRESS_OFFSET));
-            importantChecks.Add(magnet = new Magic(memory, 0x0032F0FF, ADDRESS_OFFSET));
-            importantChecks.Add(reflect = new Magic(memory, 0x0032F100, ADDRESS_OFFSET));
 
-            reportsHandler = new ReportsHandler();
 
-            //importantChecks.Add(rep1 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 6));
-            //importantChecks.Add(rep2 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 7));
-            //importantChecks.Add(rep3 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 0));
-            //importantChecks.Add(rep4 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 1));
-            importantChecks.Add(rep5 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 2, reportsHandler));
+            importantChecks.Add(fire = new Magic(memory, Save + 0x3594, ADDRESS_OFFSET));
+            importantChecks.Add(blizzard = new Magic(memory, Save + 0x3595, ADDRESS_OFFSET));
+            importantChecks.Add(thunder = new Magic(memory, Save + 0x3596, ADDRESS_OFFSET));
+            importantChecks.Add(cure = new Magic(memory, Save + 0x3597, ADDRESS_OFFSET));
+            importantChecks.Add(magnet = new Magic(memory, Save + 0x35CF, ADDRESS_OFFSET));
+            importantChecks.Add(reflect = new Magic(memory, Save + 0x35D0, ADDRESS_OFFSET));
+
+            //reportsHandler = new ReportsHandler();
+
+            ////importantChecks.Add(rep1 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 6));
+            ////importantChecks.Add(rep2 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 7));
+            ////importantChecks.Add(rep3 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 0));
+            ////importantChecks.Add(rep4 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 1));
+            //importantChecks.Add(rep5 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 2, reportsHandler));
             //importantChecks.Add(rep6 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 3));
             //importantChecks.Add(rep7 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 4));
             //importantChecks.Add(rep8 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 5));
@@ -120,41 +123,41 @@ namespace KH2TrackAuto
             //importantChecks.Add(rep12 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 2));
             //importantChecks.Add(rep13 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 3));
 
-            reports = new List<Report>();
+            //reports = new List<Report>();
 
-            /*reports.Add(rep1);
-            reports.Add(rep2);
-            reports.Add(rep3);
-            reports.Add(rep4);*/
-            reports.Add(rep5);
-            /*reports.Add(rep6);
-            reports.Add(rep7);
-            reports.Add(rep8);
-            reports.Add(rep9);
-            reports.Add(rep10);
-            reports.Add(rep11);
-            reports.Add(rep12);
-            reports.Add(rep13);*/
+            ///*reports.Add(rep1);
+            //reports.Add(rep2);
+            //reports.Add(rep3);
+            //reports.Add(rep4);*/
+            //reports.Add(rep5);
+            ///*reports.Add(rep6);
+            //reports.Add(rep7);
+            //reports.Add(rep8);
+            //reports.Add(rep9);
+            //reports.Add(rep10);
+            //reports.Add(rep11);
+            //reports.Add(rep12);
+            //reports.Add(rep13);*/
 
-            reportsHandler.CollectReports(reports);
+            //reportsHandler.CollectReports(reports);
 
 
-            foreach (Report report in reports)
-            {
-                report.reportsHandler = reportsHandler;
-            }
+            //foreach (Report report in reports)
+            //{
+            //    report.reportsHandler = reportsHandler;
+            //}
 
-            importantChecks.Add(chickenLittle = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 3));
-            importantChecks.Add(stitch = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 0));
-            importantChecks.Add(genie = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 4));
-            importantChecks.Add(peterPan = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 5));
+            //importantChecks.Add(chickenLittle = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 3));
+            //importantChecks.Add(stitch = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 0));
+            //importantChecks.Add(genie = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 4));
+            //importantChecks.Add(peterPan = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 5));
 
-            importantChecks.Add(promiseCharm = new Proof(memory, 0x0032F1C4, ADDRESS_OFFSET));
-            importantChecks.Add(peace = new Proof(memory, 0x0032F1E4, ADDRESS_OFFSET));
-            importantChecks.Add(nonexist = new Proof(memory, 0x0032F1E3, ADDRESS_OFFSET));
-            importantChecks.Add(connection = new Proof(memory, 0x0032F1E2, ADDRESS_OFFSET));
+            //importantChecks.Add(promiseCharm = new Proof(memory, 0x0032F1C4, ADDRESS_OFFSET));
+            //importantChecks.Add(peace = new Proof(memory, 0x0032F1E4, ADDRESS_OFFSET));
+            //importantChecks.Add(nonexist = new Proof(memory, 0x0032F1E3, ADDRESS_OFFSET));
+            //importantChecks.Add(connection = new Proof(memory, 0x0032F1E2, ADDRESS_OFFSET));
 
-            importantChecks.Add(pages = new TornPage(memory, 0x0032F0C8, ADDRESS_OFFSET));
+            //importantChecks.Add(pages = new TornPage(memory, 0x0032F0C8, ADDRESS_OFFSET));
 
             SetBindings();
             SetTimer();
@@ -189,33 +192,33 @@ namespace KH2TrackAuto
         private void SetBindings()
         {
 
-            Binding reportBinding = new Binding("Count");
-            reportBinding.Source = reportsHandler.Reports;
-            ReportsLabel.SetBinding(ContentControl.ContentProperty, reportBinding);
+            //Binding reportBinding = new Binding("Count");
+            //reportBinding.Source = reportsHandler.Reports;
+            //ReportsLabel.SetBinding(ContentControl.ContentProperty, reportBinding);
 
 
 
-            highJump.BindLabel(HighJumpLabel, "Level");
-            highJump.BindImage(HighJumpImage, "Obtained");
-            quickRun.BindLabel(QuickRunLabel, "Level");
-            quickRun.BindImage(QuickRunImage, "Obtained");
-            aerialDodge.BindLabel(AerialDodgeLabel, "Level");
-            aerialDodge.BindImage(AerialDodgeImage, "Obtained");
-            dodgeRoll.BindLabel(DodgeRollLabel, "Level");
-            dodgeRoll.BindImage(DodgeRollImage, "Obtained");
-            glide.BindLabel(GlideLabel, "Level");
-            glide.BindImage(GlideImage, "Obtained");
+            //highJump.BindLabel(HighJumpLabel, "Level");
+            //highJump.BindImage(HighJumpImage, "Obtained");
+            //quickRun.BindLabel(QuickRunLabel, "Level");
+            //quickRun.BindImage(QuickRunImage, "Obtained");
+            //aerialDodge.BindLabel(AerialDodgeLabel, "Level");
+            //aerialDodge.BindImage(AerialDodgeImage, "Obtained");
+            //dodgeRoll.BindLabel(DodgeRollLabel, "Level");
+            //dodgeRoll.BindImage(DodgeRollImage, "Obtained");
+            //glide.BindLabel(GlideLabel, "Level");
+            //glide.BindImage(GlideImage, "Obtained");
 
-            valor.BindLabel(ValorLabel, "Level");
-            valor.BindImage(ValorImage, "Obtained");
-            wisdom.BindLabel(WisdomLabel, "Level");
-            wisdom.BindImage(WisdomImage, "Obtained");
-            master.BindLabel(MasterLabel, "Level");
-            master.BindImage(MasterImage, "Obtained");
-            limit.BindLabel(LimitLabel, "Level");
-            limit.BindImage(LimitImage, "Obtained");
-            final.BindLabel(FinalLabel, "Level");
-            final.BindImage(FinalImage, "Obtained");
+            //valor.BindLabel(ValorLabel, "Level");
+            //valor.BindImage(ValorImage, "Obtained");
+            //wisdom.BindLabel(WisdomLabel, "Level");
+            //wisdom.BindImage(WisdomImage, "Obtained");
+            //master.BindLabel(MasterLabel, "Level");
+            //master.BindImage(MasterImage, "Obtained");
+            //limit.BindLabel(LimitLabel, "Level");
+            //limit.BindImage(LimitImage, "Obtained");
+            //final.BindLabel(FinalLabel, "Level");
+            //final.BindImage(FinalImage, "Obtained");
 
             fire.BindLabel(FireLabel, "Level");
             fire.BindImage(FireImage, "Obtained");
@@ -230,17 +233,17 @@ namespace KH2TrackAuto
             reflect.BindLabel(ReflectLabel, "Level");
             reflect.BindImage(ReflectImage, "Obtained");
 
-            pages.BindLabel(TornPagesLabel, "Quantity", false);
+            //pages.BindLabel(TornPagesLabel, "Quantity", false);
 
-            nonexist.BindImage(ProofNonExistenceImage, "Obtained");
-            peace.BindImage(ProofPeaceImage, "Obtained");
-            connection.BindImage(ProofConnectionImage, "Obtained");
-            promiseCharm.BindImage(PromiseCharmImage, "Obtained");
+            //nonexist.BindImage(ProofNonExistenceImage, "Obtained");
+            //peace.BindImage(ProofPeaceImage, "Obtained");
+            //connection.BindImage(ProofConnectionImage, "Obtained");
+            //promiseCharm.BindImage(PromiseCharmImage, "Obtained");
 
-            stitch.BindImage(StitchImage, "Obtained");
-            chickenLittle.BindImage(ChickenLittleImage, "Obtained");
-            genie.BindImage(GenieImage, "Obtained");
-            peterPan.BindImage(PeterPanImage, "Obtained");
+            //stitch.BindImage(StitchImage, "Obtained");
+            //chickenLittle.BindImage(ChickenLittleImage, "Obtained");
+            //genie.BindImage(GenieImage, "Obtained");
+            //peterPan.BindImage(PeterPanImage, "Obtained");
         }
         private void SetTimer()
         {
@@ -252,10 +255,10 @@ namespace KH2TrackAuto
 
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            if (ADDRESS_OFFSET == 0)
-            {
-                findAddressOffset();
-            }
+            //if (ADDRESS_OFFSET == 0)
+            //{
+            //    findAddressOffset();
+            //}
             importantChecks.ForEach(delegate (ImportantCheck importantCheck)
             {
                 importantCheck.UpdateMemory();

@@ -13,7 +13,7 @@ namespace KH2TrackAuto
         public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
         [DllImport("kernel32.dll")]
-        public static extern bool ReadProcessMemory(int hProcess, int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
+        public static extern bool ReadProcessMemory(int hProcess, Int64 lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
 
         Process process;
         IntPtr processHandle;
@@ -22,7 +22,7 @@ namespace KH2TrackAuto
         {
             try
             {
-                process = Process.GetProcessesByName("pcsx2")[0];
+                process = Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0];
                 processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
             }
             catch (IndexOutOfRangeException e)
@@ -40,13 +40,15 @@ namespace KH2TrackAuto
             {
                 if (process.HasExited)
                 {
-                    process = Process.GetProcessesByName("pcsx2")[0];
+                    process = Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0];
                     processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
                 }
                 int bytesRead = 0;
-                byte[] buffer = new byte[bytesToRead]; 
+                byte[] buffer = new byte[bytesToRead];
 
-                ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
+                ProcessModule processModule = process.MainModule;
+
+                ReadProcessMemory((int)processHandle, processModule.BaseAddress.ToInt64() + address, buffer, buffer.Length, ref bytesRead);
                 //Array.Reverse(buffer, 0, buffer.Length);
                 return buffer;
             }
