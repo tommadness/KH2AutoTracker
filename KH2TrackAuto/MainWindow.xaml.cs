@@ -109,19 +109,19 @@ namespace KH2TrackAuto
 
             //reportsHandler = new ReportsHandler();
 
-            ////importantChecks.Add(rep1 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 6));
-            ////importantChecks.Add(rep2 = new Report(memory, 0x0032F1F4, ADDRESS_OFFSET, 7));
-            ////importantChecks.Add(rep3 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 0));
-            ////importantChecks.Add(rep4 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 1));
-            //importantChecks.Add(rep5 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 2, reportsHandler));
-            //importantChecks.Add(rep6 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 3));
-            //importantChecks.Add(rep7 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 4));
-            //importantChecks.Add(rep8 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 5));
-            //importantChecks.Add(rep9 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 6));
-            //importantChecks.Add(rep10 = new Report(memory, 0x0032F1F5, ADDRESS_OFFSET, 7));
-            //importantChecks.Add(rep11 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 1));
-            //importantChecks.Add(rep12 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 2));
-            //importantChecks.Add(rep13 = new Report(memory, 0x0032F1F6, ADDRESS_OFFSET, 3));
+            ////importantChecks.Add(rep1 = new Report(memory, Save+0x36C4, ADDRESS_OFFSET, 6));
+            ////importantChecks.Add(rep2 = new Report(memory, Save+0x36C4, ADDRESS_OFFSET, 7));
+            ////importantChecks.Add(rep3 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 0));
+            ////importantChecks.Add(rep4 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 1));
+            //importantChecks.Add(rep5 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 2, reportsHandler));
+            //importantChecks.Add(rep6 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 3));
+            //importantChecks.Add(rep7 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 4));
+            //importantChecks.Add(rep8 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 5));
+            //importantChecks.Add(rep9 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 6));
+            //importantChecks.Add(rep10 = new Report(memory, Save+0x36C5, ADDRESS_OFFSET, 7));
+            //importantChecks.Add(rep11 = new Report(memory, Save+0x36C6, ADDRESS_OFFSET, 1));
+            //importantChecks.Add(rep12 = new Report(memory, Save+0x36C6, ADDRESS_OFFSET, 2));
+            //importantChecks.Add(rep13 = new Report(memory, Save+0x36C6, ADDRESS_OFFSET, 3));
 
             //reports = new List<Report>();
 
@@ -147,17 +147,17 @@ namespace KH2TrackAuto
             //    report.reportsHandler = reportsHandler;
             //}
 
-            //importantChecks.Add(chickenLittle = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 3));
-            //importantChecks.Add(stitch = new Summon(memory, 0x0032F1F0, ADDRESS_OFFSET, 0));
-            //importantChecks.Add(genie = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 4));
-            //importantChecks.Add(peterPan = new Summon(memory, 0x0032F1F4, ADDRESS_OFFSET, 5));
+            //importantChecks.Add(chickenLittle = new Summon(memory, Save + 0x36C0, ADDRESS_OFFSET, 3));
+            //importantChecks.Add(stitch = new Summon(memory, Save + 0x36C0, ADDRESS_OFFSET, 0));
+            //importantChecks.Add(genie = new Summon(memory, Save + 0x36C4, ADDRESS_OFFSET, 4));
+            //importantChecks.Add(peterPan = new Summon(memory, Save + 0x36C4, ADDRESS_OFFSET, 5));
 
-            //importantChecks.Add(promiseCharm = new Proof(memory, 0x0032F1C4, ADDRESS_OFFSET));
-            //importantChecks.Add(peace = new Proof(memory, 0x0032F1E4, ADDRESS_OFFSET));
-            //importantChecks.Add(nonexist = new Proof(memory, 0x0032F1E3, ADDRESS_OFFSET));
-            //importantChecks.Add(connection = new Proof(memory, 0x0032F1E2, ADDRESS_OFFSET));
+            importantChecks.Add(promiseCharm = new Proof(memory, Save+0x3694, ADDRESS_OFFSET));
+            importantChecks.Add(peace = new Proof(memory, Save + 0x36B4, ADDRESS_OFFSET));
+            importantChecks.Add(nonexist = new Proof(memory, Save + 0x36B3, ADDRESS_OFFSET));
+            importantChecks.Add(connection = new Proof(memory, Save + 0x36B2, ADDRESS_OFFSET));
 
-            //importantChecks.Add(pages = new TornPage(memory, 0x0032F0C8, ADDRESS_OFFSET));
+            //importantChecks.Add(pages = new TornPage(memory, Save+0x3598, ADDRESS_OFFSET));
 
             SetBindings();
             SetTimer();

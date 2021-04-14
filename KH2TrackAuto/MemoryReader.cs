@@ -22,7 +22,7 @@ namespace KH2TrackAuto
         {
             try
             {
-                process = Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0];
+                process = Process.GetProcessesByName("pcsx2")[0];
                 processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
             }
             catch (IndexOutOfRangeException e)
@@ -40,7 +40,7 @@ namespace KH2TrackAuto
             {
                 if (process.HasExited)
                 {
-                    process = Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0];
+                    process = Process.GetProcessesByName("pcsx2")[0];
                     processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
                 }
                 int bytesRead = 0;
